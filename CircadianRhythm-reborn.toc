@@ -4,4 +4,4 @@
 ## Author: Bennylava
 ## Version: 1.0
 ## SavedVariables: CircadianRhythmSettings
-CircadianRhythm.lua
+CircadianRhythm-reborn.lua
