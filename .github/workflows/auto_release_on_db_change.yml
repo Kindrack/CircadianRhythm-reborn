@@ -1,0 +1,35 @@
+name: Release CircadianRhythm-reborn on changes
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Extract version from TOC file
+        id: get_version
+        run: |
+          VERSION=$(grep "## Version:" CircadianRhythm-reborn.toc | sed 's/## Version: //')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Found version: $VERSION"
+
+      - name: Create CircadianRhythm-reborn zip
+        run: |
+          mkdir CircadianRhythm-reborn
+          rsync -av --exclude='.git' --exclude='.github' --exclude='*.md' --exclude='LICENSE' --exclude='.gitattributes' --exclude='CircadianRhythm-reborn' . CircadianRhythm-reborn/
+          zip -r CircadianRhythm-reborn.zip CircadianRhythm-reborn/
+
+      - name: Create Versioned Release and Upload Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: CircadianRhythm-reborn-v${{ steps.get_version.outputs.version }}
+          name: CircadianRhythm-reborn v${{ steps.get_version.outputs.version }}
+          files: CircadianRhythm-reborn.zip
+          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
