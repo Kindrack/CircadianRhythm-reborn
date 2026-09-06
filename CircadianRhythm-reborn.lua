@@ -21,7 +21,7 @@ local function DefaultSettings()
 end
 
 local function ApplyDefaults(tbl)
-    for k, v in pairs(DefaultSettings()) do
+    for k, v in pairs(tbl) do
         if tbl[k] == nil then
             tbl[k] = v
         end
