@@ -2,7 +2,9 @@
 ## Title: CircadianRhythm
 ## Notes: A simple addon to show Epoch game time.
 ## Author: Bennylava
-## Version: 1.0.1
+## Contributors: Kindrak
+## Version: 1.0.2
 ## SavedVariables: CircadianRhythmSettings
+
 CircadianRhythm-reborn.lua
 CircadianRhythm-updater.lua

@@ -21,7 +21,7 @@ local function DefaultSettings()
 end
 
 local function ApplyDefaults(tbl)
-    for k, v in pairs(DefaultSettings()) do
+    for k, v in pairs(tbl) do
         if tbl[k] == nil then
             tbl[k] = v
         end
@@ -467,7 +467,7 @@ hoverCheckbox:SetPoint("TOPLEFT", generalHeader, "BOTTOMLEFT", 0, -6)
 
 local hoverLabel = hoverCheckbox:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 hoverLabel:SetPoint("LEFT", hoverCheckbox, "RIGHT", 4, 0)
-hoverLabel:SetText("Show Game Time on Hover")
+hoverLabel:SetText("Show Game Time Info on Hover")
 
 hoverCheckbox:SetChecked(settings.showGameTimeOnHover)
 hoverCheckbox:SetScript("OnClick", function(self)
@@ -498,7 +498,7 @@ lockCheckbox:SetPoint("TOPLEFT", buttonCheckbox, "BOTTOMLEFT", 0, -8)
 
 local lockLabel = lockCheckbox:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 lockLabel:SetPoint("LEFT", lockCheckbox, "RIGHT", 4, 0)
-lockLabel:SetText("Lock Button Position")
+lockLabel:SetText("Lock Graphic Position")
 
 lockCheckbox:SetChecked(settings.buttonLocked)
 lockCheckbox:SetScript("OnClick", function(self)
@@ -559,7 +559,7 @@ militaryCheckbox:SetPoint("TOPLEFT", secondsCheckbox, "BOTTOMLEFT", 0, -4)
 
 local militaryLabel = militaryCheckbox:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 militaryLabel:SetPoint("LEFT", militaryCheckbox, "RIGHT", 4, 0)
-militaryLabel:SetText("Use Military Time")
+militaryLabel:SetText("Use 24 Hour Clock")
 
 militaryCheckbox:SetChecked(settings.clockMilitaryTime)
 militaryCheckbox:SetScript("OnClick", function(self)
@@ -789,11 +789,11 @@ helpIconTexture:SetTexture("Interface\\FriendsFrame\\InformationIcon")
 helpIcon:SetScript("OnEnter", function(self)
     GameTooltip:SetOwner(self, "ANCHOR_LEFT")
     GameTooltip:SetText("Instructions", 1, 0.82, 0, 1, true)
-    GameTooltip:AddLine("Left-click the button to open Calendar", 1, 1, 1, true)
-    GameTooltip:AddLine("Right-click the button to toggle lock/unlock", 1, 1, 1, true)
-    GameTooltip:AddLine("Drag the button to move it (when unlocked)", 1, 1, 1, true)
+    GameTooltip:AddLine("Left-click the graphic to open Calendar", 1, 1, 1, true)
+    GameTooltip:AddLine("Right-click the graphic to toggle lock/unlock", 1, 1, 1, true)
+    GameTooltip:AddLine("Drag the graphic to move it (when unlocked)", 1, 1, 1, true)
     GameTooltip:AddLine("Left-click the clock text to open/close the Time Manager panel", 1, 1, 1, true)
-    GameTooltip:AddLine("When Clock Position is set to Free, drag the clock text to move it", 1, 1, 1, true)
+    GameTooltip:AddLine("Drag the clock text to move it (when Clock Position is set to Free and unlocked)", 1, 1, 1, true)
     GameTooltip:Show()
 end)
 
